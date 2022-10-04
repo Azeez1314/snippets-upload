@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>Profile</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+      <header id="header">
+        <h1 id="logo"><a href="">SNIPPETS</a></h1>
+        <nav id="nav">
+          <ul>
+            <li><a href="\logout" class="button primary">Logout</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<movies.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <a href="/movie/<%= movies[i]._id%>">
+              <img class="img-fluid" src="<%= movies[i].image%>">
+            </a>
+          </li>
+        <% } %>
+        </ul>
+    </div>
+  </div>  
+<%- include('partials/footer') -%>

@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<title>Profile</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+      <header id="header">
+        <h1 id="logo"><a href="">SNIPPETS</a></h1>
+        <nav id="nav">
+          <ul>
+            <li><a href="\logout" class="button primary">Logout</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="container">
+        <div class="row mt-5">
+            <div class="col-6">
+                <div>
+                    <p><strong>User Name</strong>: <%= user.userName %></p>
+                    <p><strong>Email</strong>: <%= user.email %></p>
+                </div>
+                <div class="mt-5">
+                  <h2>Add a Book Review</h2>
+                  <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="mb-3">
+                      <label for="caption" class="form-label">Caption</label>
+                      <textarea class="form-control" id="caption" name="caption"></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <label for="imgUpload" class="form-label">Image</label>
+                      <input type="file" class="form-control" id="imageUpload" name="file">
+                    </div>
+                    <button type="submit" class="button primary" value="Upload">Submit</button>
+                  </form> <br>
+      
+                  <h2>Add a Movie Review</h2>
+                <form action="/movie/createMovie" enctype="multipart/form-data" method="POST">
+                  <div class="mb-3">
+                      <label for="title" class="form-label">Title</label>
+                      <input type="text" class="form-control" id="title" name="title">
+                  </div>
+                  <div class="mb-3">
+                    <label for="caption" class="form-label">Caption</label>
+                    <textarea class="form-control" id="caption" name="caption"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="imgUpload" class="form-label">Image</label>
+                    <input type="file" class="form-control" id="imageUpload" name="file">
+                  </div>
+                  <button type="submit" class="button primary" value="Upload">Submit</button>
+                </form>
+                </div>
+            </div>
+            <div class="col-6">
+              <ul class="row list-unstyled">
+              <% for(var i=0; i<posts.length; i++) {%>
+                <li class="col-6 justify-content-between mt-5">
+                  <a href="/post/<%= posts[i]._id%>">
+                    <img class="img-fluid" src="<%= posts[i].image%>">
+                  </a>
+                </li>
+              <% } %>
+              </ul>
+          </div>
+          
+              <div class="col-6 mt-5">
+                <a class="btn btn-primary" href="/feed">Return to Book Feed</a> <br>
+                <a class="btn btn-primary" href="/feedMovie">Return to Movie Feed</a>
+              </div>  
+            </div>  
+          </div>
+        </div>
+      </div>
+      
+      </div>
+      </body>
+      </html>
+<%- include('partials/footer') -%>
